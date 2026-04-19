@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#shine)"/>
+  <!-- Shield -->
+  <path d="M256 96 L380 148 L380 272 C380 348 320 406 256 432 C192 406 132 348 132 272 L132 148 Z"
+        fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="4"/>
+  <!-- Shield inner fill -->
+  <path d="M256 116 L364 162 L364 272 C364 338 308 392 256 414 C204 392 148 338 148 272 L148 162 Z"
+        fill="rgba(255,255,255,0.12)"/>
+  <!-- Checkmark -->
+  <polyline points="200,264 240,308 316,220"
+            fill="none" stroke="white" stroke-width="26"
+            stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
