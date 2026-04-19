@@ -135,6 +135,10 @@ export default function App() {
   }, [activeSteps])
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [stepIdx])
+
+  useEffect(() => {
     const handler = (e) => {
       if (e.key === 'Escape' && stepIdx > 0) goBack()
     }

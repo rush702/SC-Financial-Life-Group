@@ -13,9 +13,8 @@ export default function ContingentStep({ formData, onNext, onBack }) {
 
   useEffect(() => { if (!skip) ref.current?.focus() }, [skip])
 
-  const skipStep = () => {
+  const skipStep = () =>
     onNext({ contingentName: '', contingentRelation: '', contingentDob: '', contingentPercent: '' })
-  }
 
   const submit = () => {
     if (!name.trim() || !relation) return
@@ -26,19 +25,13 @@ export default function ContingentStep({ formData, onNext, onBack }) {
     <div className="step">
       <SectionBadge section="F" label="Beneficiaries" />
       <h2 className="step-question">Add a contingent beneficiary?</h2>
-      <p className="step-hint">A contingent (backup) beneficiary receives the benefit if your primary beneficiary predeceases you. This step is optional.</p>
+      <p className="step-hint">A contingent (backup) beneficiary receives the benefit if your primary predeceases you. Optional.</p>
 
       {skip ? (
-        <>
-          <div className="info-box">
-            <span className="info-box-icon">💡</span>
-            <span>Adding a contingent beneficiary is strongly recommended to ensure your benefit reaches the right person in any circumstance.</span>
-          </div>
-          <div style={{ display: 'flex', gap: 12, marginBottom: 24 }}>
-            <button className="btn-primary" onClick={() => setSkip(false)}>Add Contingent Beneficiary</button>
-            <button className="btn-secondary" onClick={skipStep}>Skip →</button>
-          </div>
-        </>
+        <div className="info-box">
+          <span className="info-box-icon">💡</span>
+          <span>Adding a contingent beneficiary is strongly recommended to ensure your benefit always reaches the right person.</span>
+        </div>
       ) : (
         <>
           <div className="field-group">
@@ -70,22 +63,24 @@ export default function ContingentStep({ formData, onNext, onBack }) {
               <span style={{ color: 'var(--text-muted)', fontWeight: 700, fontSize: '1.2rem' }}>%</span>
             </div>
           </div>
-
-          <div className="step-actions">
-            <button className="btn-ghost" onClick={onBack}>← Back</button>
-            <div className="step-actions-right">
-              <button className="btn-secondary" onClick={skipStep}>Skip</button>
-              <button className="btn-primary" onClick={submit} disabled={!name.trim() || !relation}>Continue →</button>
-            </div>
-          </div>
         </>
       )}
 
-      {skip && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
-        </div>
-      )}
+      {/* single action bar — always rendered once */}
+      <div className="step-actions">
+        <button className="btn-ghost" onClick={onBack}>← Back</button>
+        {skip ? (
+          <>
+            <button className="btn-secondary" onClick={() => setSkip(false)}>Add Beneficiary</button>
+            <button className="btn-primary" onClick={skipStep}>Skip →</button>
+          </>
+        ) : (
+          <>
+            <button className="btn-secondary" onClick={skipStep}>Skip</button>
+            <button className="btn-primary" onClick={submit} disabled={!name.trim() || !relation}>Continue →</button>
+          </>
+        )}
+      </div>
     </div>
   )
 }

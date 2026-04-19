@@ -1015,14 +1015,247 @@ kbd {
   line-height: 1.55;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 580px) {
-  .app { padding: 0 14px 48px; }
-  .cards-grid.four { grid-template-columns: 1fr 1fr; }
-  .cards-grid.three { grid-template-columns: 1fr 1fr; }
-  .health-scale { gap: 6px; }
-  .field-row { grid-template-columns: 1fr; }
-  .field-row.three { grid-template-columns: 1fr; }
-  .welcome-stats { gap: 20px; }
-  .step-question { font-size: clamp(1.6rem, 6vw, 2.2rem); }
+/* ══════════════════════════════════════════
+   MOBILE — comprehensive overhaul
+   Target: phones ≤ 640px
+   ══════════════════════════════════════════ */
+@media (max-width: 640px) {
+
+  /* ── Page layout ── */
+  html, body, #root { height: 100%; }
+
+  body {
+    /* prevent rubber-band scroll from showing bg colour gap */
+    overscroll-behavior-y: none;
+  }
+
+  .app {
+    /* no horizontal padding here — children add their own */
+    padding: 0;
+    padding-bottom: 0;        /* fixed bar handles bottom space */
+    align-items: stretch;     /* children span full width */
+  }
+
+  /* ── Progress bar — sticky at top ── */
+  .progress-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(7, 7, 26, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 18px 8px;
+    max-width: 100%;
+    width: 100%;
+    /* safe area for notched phones */
+    padding-top: max(10px, env(safe-area-inset-top, 10px));
+  }
+
+  /* ── Step container ── */
+  .step-container {
+    padding: 16px 18px 0;
+    justify-content: flex-start;
+    padding-top: 20px;
+    /* extra bottom room so content clears the fixed action bar */
+    padding-bottom: 104px;
+  }
+
+  /* ── Step action bar — fixed at bottom ── */
+  .step-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 18px;
+    padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
+    background: rgba(7, 7, 26, 0.96);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-top: 1px solid var(--border);
+  }
+
+  /* Let the primary button expand to fill space in fixed bar */
+  .step-actions .btn-primary {
+    flex: 1;
+    justify-content: center;
+  }
+
+  /* Back ghost button — compact on mobile */
+  .step-actions .btn-ghost {
+    flex-shrink: 0;
+    min-width: 64px;
+  }
+
+  /* Secondary (Skip) button stays compact */
+  .step-actions .btn-secondary {
+    flex-shrink: 0;
+  }
+
+  .step-actions-right {
+    display: contents; /* let children participate in step-actions flex */
+  }
+
+  /* ── Typography ── */
+  .step-question {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+    margin-bottom: 8px;
+  }
+  .step-hint {
+    font-size: 0.9rem;
+    margin-bottom: 26px;
+  }
+
+  /* ── Inputs — 16px prevents iOS auto-zoom ── */
+  .input,
+  select.input,
+  textarea.input {
+    font-size: 16px !important;
+    min-height: 52px;
+    padding: 14px 16px;
+  }
+  select.input { padding-right: 40px; }
+
+  /* Esign input stays large/stylistic */
+  .esign-input { font-size: 1.3rem !important; min-height: 60px; }
+
+  /* ── Buttons — 48px min touch target ── */
+  .btn-primary  { min-height: 52px; font-size: 1rem; padding: 14px 24px; }
+  .btn-secondary{ min-height: 48px; font-size: 0.9rem; }
+  .btn-ghost    { min-height: 44px; }
+
+  /* ── Cards ── */
+  .cards-grid         { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .cards-grid.four    { grid-template-columns: 1fr 1fr; }
+  .cards-grid.three   { grid-template-columns: 1fr 1fr; }
+  .cards-grid.full    { grid-template-columns: 1fr; }
+
+  .option-card        { padding: 16px 12px; }
+  .option-card.large  { padding: 20px 16px; }
+  .option-card.full   { padding: 14px 16px; }
+
+  /* ── Health emoji scale — 3 per row ── */
+  .health-scale { flex-wrap: wrap; gap: 8px; }
+  .health-opt   { flex: 0 0 calc(33.333% - 6px); padding: 14px 6px 12px; }
+  .health-emoji { font-size: 1.8rem; }
+
+  /* ── Chips — bigger touch targets ── */
+  .chip {
+    min-height: 40px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* ── Field rows collapse to single column ── */
+  .field-row,
+  .field-row.three { grid-template-columns: 1fr; gap: 12px; }
+
+  /* ── Range slider — bigger thumb for fat fingers ── */
+  .range-input::-webkit-slider-thumb {
+    width: 32px;
+    height: 32px;
+  }
+  .range-input::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ── Hide desktop keyboard shortcut hint ── */
+  .enter-hint { display: none; }
+
+  /* ── Welcome screen — full-screen mobile feel ── */
+  .welcome {
+    padding: 20px 0 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100dvh - 90px);  /* dvh = dynamic viewport height */
+    justify-content: center;
+    text-align: center;
+  }
+  .welcome-brand { margin-bottom: 32px; }
+  .welcome-headline { font-size: clamp(2rem, 9vw, 2.8rem); margin-bottom: 16px; }
+  .welcome-sub { font-size: 0.95rem; margin-bottom: 32px; }
+  .welcome-stats { gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
+  .stat-num { font-size: 1.3rem; }
+
+  /* Welcome CTA is NOT in .step-actions so it keeps normal flow */
+  .btn-primary.xl {
+    width: 100%;
+    padding: 18px 24px;
+    font-size: 1.05rem;
+    border-radius: var(--radius);
+    min-height: 58px;
+  }
+  .welcome-trust { font-size: 0.75rem; }
+
+  /* ── Authorization toggles ── */
+  .toggle-row { padding: 14px 16px; gap: 14px; }
+  .toggle-text strong { font-size: 0.875rem; }
+
+  /* ── Esign box ── */
+  .esign-box { padding: 20px 16px; }
+  .esign-confirm { padding: 14px 16px; }
+
+  /* ── Review ── */
+  .review-card { padding: 16px 16px; }
+  .review-val  { max-width: 52%; font-size: 0.82rem; }
+  .review-key  { font-size: 0.8rem; }
+
+  /* ── Slider value display ── */
+  .slider-value { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+
+  /* ── Success ── */
+  .success-wrap { padding: 32px 0; }
+  .success-icon { width: 80px; height: 80px; font-size: 2rem; }
+  .success-title { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .next-step { padding: 13px 14px; }
+
+  /* ── Info / warning boxes ── */
+  .info-box, .warning-box { font-size: 0.8rem; }
+
+  /* ── Reveal panels ── */
+  .reveal-panel { padding: 16px; }
+
+  /* ── Section badge ── */
+  .section-badge { font-size: 0.68rem; }
+
+  /* ── Preset buttons ── */
+  .preset-btn { min-height: 40px; font-size: 0.8rem; }
+
+  /* ── Presets wrap tighter ── */
+  .presets { gap: 7px; }
+}
+
+/* ── Extra-small phones (≤ 375px) ── */
+@media (max-width: 375px) {
+  .step-container { padding: 14px 14px 0; }
+  .step-actions { padding: 10px 14px; padding-bottom: max(12px, env(safe-area-inset-bottom, 12px)); }
+  .cards-grid { gap: 8px; }
+  .chip { padding: 8px 12px; font-size: 0.8rem; }
+  .welcome-stats { justify-content: space-around; }
+}
+
+/* ── Tablet (641px – 900px) ── */
+@media (min-width: 641px) and (max-width: 900px) {
+  .app { padding: 0 28px 60px; }
+  .step-container { padding-top: 20px; }
+  .cards-grid.four  { grid-template-columns: repeat(4, 1fr); }
+  .welcome-headline { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+}
+
+/* ── Landscape mobile — tighten vertical spacing ── */
+@media (max-width: 640px) and (orientation: landscape) {
+  .step-container { padding-bottom: 80px; }
+  .step-question  { font-size: 1.4rem; margin-bottom: 6px; }
+  .step-hint      { margin-bottom: 16px; }
+  .cards-grid     { gap: 8px; }
+  .option-card    { padding: 12px 10px; }
+  .card-icon      { font-size: 1.5rem; margin-bottom: 6px; }
+  .welcome        { min-height: auto; justify-content: flex-start; }
+  .health-opt     { flex: 0 0 calc(20% - 8px); }
 }

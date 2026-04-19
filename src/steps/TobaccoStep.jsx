@@ -70,17 +70,12 @@ export default function TobaccoStep({ formData, onNext, onBack }) {
         </div>
       )}
 
-      {use && use !== 'No' && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
+      <div className="step-actions">
+        <button className="btn-ghost" onClick={onBack}>← Back</button>
+        {use && use !== 'No' && (
           <button className="btn-primary" onClick={submit}>Continue →</button>
-        </div>
-      )}
-      {!use && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

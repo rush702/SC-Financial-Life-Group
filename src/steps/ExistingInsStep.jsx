@@ -57,17 +57,12 @@ export default function ExistingInsStep({ formData, onNext, onBack }) {
         </div>
       )}
 
-      {has === 'Yes' && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
+      <div className="step-actions">
+        <button className="btn-ghost" onClick={onBack}>← Back</button>
+        {has === 'Yes' && (
           <button className="btn-primary" onClick={submit}>Continue →</button>
-        </div>
-      )}
-      {!has && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

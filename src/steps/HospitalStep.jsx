@@ -50,17 +50,12 @@ export default function HospitalStep({ formData, onNext, onBack }) {
         </div>
       )}
 
-      {hosp === 'Yes' && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
+      <div className="step-actions">
+        <button className="btn-ghost" onClick={onBack}>← Back</button>
+        {hosp === 'Yes' && (
           <button className="btn-primary" onClick={submit}>Continue →</button>
-        </div>
-      )}
-      {!hosp && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

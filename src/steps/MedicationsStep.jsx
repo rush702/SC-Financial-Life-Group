@@ -52,17 +52,12 @@ export default function MedicationsStep({ formData, onNext, onBack }) {
         </div>
       )}
 
-      {hasMeds === 'Yes' && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
+      <div className="step-actions">
+        <button className="btn-ghost" onClick={onBack}>← Back</button>
+        {hasMeds === 'Yes' && (
           <button className="btn-primary" onClick={submit}>Continue →</button>
-        </div>
-      )}
-      {!hasMeds && (
-        <div className="step-actions">
-          <button className="btn-ghost" onClick={onBack}>← Back</button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }
