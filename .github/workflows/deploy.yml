@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - claude/insurance-app-form-vSeQJ
+      - claude/sc-financial-website-Xypn1
       - main
   workflow_dispatch:
 
