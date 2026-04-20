@@ -2,7 +2,7 @@ export default function Welcome({ onNext }) {
   return (
     <div className="welcome">
       <div className="welcome-brand">
-        <div className="brand-mark">🛡️</div>
+        <div className="brand-mark"><img src="icon.svg" alt="SC Financial Life Group" className="brand-logo" /></div>
         <div className="brand-name">
           SC Financial Life Group
           <span>Licensed Insurance Brokerage</span>
