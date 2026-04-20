@@ -1,25 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="100" fill="#061545"/>
+  <circle cx="100" cy="100" r="95.5" fill="none" stroke="#B09A3E" stroke-width="1.2"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#B09A3E" stroke-width="0.6" stroke-dasharray="2.5 2"/>
+  <text x="100" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="46" font-weight="700" fill="white" letter-spacing="5">SC</text>
+  <path d="M100 120 L104 127 L100 134 L96 127 Z" fill="#B09A3E"/>
+  <text x="100" y="155" text-anchor="middle" font-family="Arial,sans-serif" font-size="8" fill="#B09A3E" letter-spacing="5">EST. MMXXVI</text>
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#8b5cf6"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </linearGradient>
+    <path id="a" d="M100,17 A83,83 0 0,1 183,100 A83,83 0 0,1 100,183 A83,83 0 0,1 17,100 A83,83 0 0,1 100,17"/>
   </defs>
-  <!-- Background rounded square -->
-  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <rect width="512" height="512" rx="112" fill="url(#shine)"/>
-  <!-- Shield -->
-  <path d="M256 96 L380 148 L380 272 C380 348 320 406 256 432 C192 406 132 348 132 272 L132 148 Z"
-        fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="4"/>
-  <!-- Shield inner fill -->
-  <path d="M256 116 L364 162 L364 272 C364 338 308 392 256 414 C204 392 148 338 148 272 L148 162 Z"
-        fill="rgba(255,255,255,0.12)"/>
-  <!-- Checkmark -->
-  <polyline points="200,264 240,308 316,220"
-            fill="none" stroke="white" stroke-width="26"
-            stroke-linecap="round" stroke-linejoin="round"/>
+  <text font-family="Arial,sans-serif" font-size="8.5" fill="#B09A3E" letter-spacing="4.5">
+    <textPath href="#a" startOffset="5%">SC FINANCIAL AND LIFE SERVICES · EST MMXXVI ·</textPath>
+  </text>
 </svg>
