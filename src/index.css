@@ -1,50 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #07071a;
-  --bg-card: rgba(255,255,255,0.04);
-  --bg-card-hover: rgba(255,255,255,0.07);
-  --bg-selected: rgba(99,102,241,0.18);
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-glow: rgba(99,102,241,0.35);
-  --secondary: #8b5cf6;
-  --cyan: #06b6d4;
+  /* SC Financial Life Group Brand Colors */
+  --bg: #082545;
+  --bg-deep: #061a33;
+  --bg-card: rgba(255,255,255,0.06);
+  --bg-card-hover: rgba(255,255,255,0.10);
+  --bg-selected: rgba(134,113,13,0.22);
+  --primary: #86710D;
+  --primary-light: #a8920f;
+  --primary-glow: rgba(134,113,13,0.35);
+  --secondary: #EDEAE3;
+  --gold: #86710D;
+  --gold-light: #c9a227;
+  --midnight: #082545;
+  --parchment: #EDEAE3;
   --success: #10b981;
   --warning: #f59e0b;
   --danger: #ef4444;
   --rose: #f43f5e;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --border: rgba(255,255,255,0.09);
-  --border-selected: rgba(99,102,241,0.6);
+  --text: #EDEAE3;
+  --text-muted: rgba(237,234,227,0.65);
+  --text-dim: rgba(237,234,227,0.40);
+  --border: rgba(237,234,227,0.12);
+  --border-selected: rgba(134,113,13,0.7);
   --radius: 16px;
   --radius-sm: 10px;
   --radius-xs: 6px;
   --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
 
-  /* Section colors */
-  --sec-a: #6366f1;
-  --sec-b: #06b6d4;
-  --sec-c: #f43f5e;
-  --sec-d: #f59e0b;
+  /* Section colors - gold/navy palette */
+  --sec-a: #86710D;
+  --sec-b: #a8920f;
+  --sec-c: #c9a227;
+  --sec-d: #d4b86a;
   --sec-e: #10b981;
-  --sec-f: #8b5cf6;
-  --sec-g: #34d399;
-  --sec-r: #94a3b8;
+  --sec-f: #3a7bd5;
+  --sec-g: #5a9fd4;
+  --sec-r: rgba(237,234,227,0.5);
 }
 
 html, body, #root { height: 100%; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Instrument Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
   background-image:
-    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(99,102,241,0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(139,92,246,0.08) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(134,113,13,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 85%, rgba(134,113,13,0.05) 0%, transparent 70%);
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
 }
@@ -677,34 +684,39 @@ kbd {
   margin-bottom: 52px;
 }
 .brand-mark {
-  width: 50px; height: 50px;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  border-radius: 15px;
+  width: 56px; height: 56px;
+  background: transparent;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  box-shadow: 0 8px 24px rgba(99,102,241,0.4);
-  animation: float 4s ease-in-out infinite;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 .brand-logo {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: 0;
+  display: block;
 }
 .brand-name {
   text-align: left;
-  font-weight: 800;
-  font-size: 1rem;
-  line-height: 1.25;
+  font-family: 'Gloock', 'Georgia', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: var(--parchment);
+  letter-spacing: 0.02em;
 }
 .brand-name span {
   display: block;
-  font-size: 0.72rem;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.66rem;
   font-weight: 500;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .welcome-headline {
@@ -1271,19 +1283,21 @@ kbd {
 .progress-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px 6px;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 12px;
+  padding: 12px 20px 8px;
+  border-bottom: 1px solid rgba(134,113,13,0.2);
+  background: rgba(6,26,51,0.5);
 }
 .progress-logo {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 0;
 }
 .progress-brand-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  letter-spacing: 0.02em;
+  font-family: 'Gloock', 'Georgia', serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--parchment);
+  letter-spacing: 0.04em;
 }
