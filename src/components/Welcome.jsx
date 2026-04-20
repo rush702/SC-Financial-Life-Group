@@ -2,17 +2,19 @@ export default function Welcome({ onNext }) {
   return (
     <div className="welcome">
       <div className="welcome-brand">
-        <div className="brand-mark"><img src="icon.svg" alt="SC Financial Life Group" className="brand-logo" /></div>
+        <div className="brand-mark"><img src="logo.png" alt="SC Financial Life Group" className="brand-logo" /></div>
         <div className="brand-name">
           SC Financial Life Group
-          <span>Licensed Insurance Brokerage</span>
+          <span>& Life Group</span>
         </div>
       </div>
 
       <h1 className="welcome-headline">
-        Protect what<br />
-        <span className="g">matters most.</span>
+        Stewards of Your<br />
+        <span className="g">Financial Life.</span>
       </h1>
+
+      <p className="welcome-tagline">Prudence · Protection · Prosperity</p>
 
       <p className="welcome-sub">
         Answer a few questions and we'll find the right life insurance coverage for you.
