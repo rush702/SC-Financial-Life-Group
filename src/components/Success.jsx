@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 // Steps: 1) Go to https://formspree.io and sign up with rush702@gmail.com
 //         2) Create a new form → copy the form ID (e.g. "xpwzgkjd")
 //         3) Replace 'YOUR_FORM_ID' below with that ID, then commit.
-const FORMSPREE_ID = 'YOUR_FORM_ID'
+const FORMSPREE_ID = 'xgorpldw'
 
 export default function Success({ formData }) {
     const refNum = `SCF-${Date.now().toString(36).toUpperCase()}`
