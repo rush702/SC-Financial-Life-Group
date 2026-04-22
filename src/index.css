@@ -1449,7 +1449,10 @@ kbd {
 .lp-hero {
   position: relative;
   min-height: 100vh;
-  background: var(--sc-navy);
+  background-color: var(--sc-navy);
+  background-image: url('https://images.unsplash.com/photo-1543269664-76bc3997564a?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center 35%;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -1460,20 +1463,19 @@ kbd {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 80% at 25% 50%, rgba(12,32,112,0.65) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 85% 15%, rgba(176,154,62,0.05) 0%, transparent 60%);
+    linear-gradient(90deg,
+      rgba(6,21,69,0.95) 0%,
+      rgba(6,21,69,0.88) 38%,
+      rgba(6,21,69,0.55) 65%,
+      rgba(6,21,69,0.20) 100%),
+    linear-gradient(180deg,
+      rgba(6,21,69,0.4) 0%, transparent 30%,
+      transparent 70%, rgba(6,21,69,0.6) 100%);
   pointer-events: none;
+  z-index: 1;
 }
-.lp-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(176,154,62,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(176,154,62,0.03) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-}
+.lp-hero::after { display: none; }
+.lp-hero-overlay { display: none; }
 .lp-hero-watermark {
   position: absolute;
   right: -4%;
@@ -1487,6 +1489,7 @@ kbd {
   position: relative;
   z-index: 2;
   width: 100%;
+  /* sits above the ::before overlay (z-index 1) */
 }
 .lp-hero-eyebrow {
   font-family: 'Instrument Sans', sans-serif;
@@ -1913,8 +1916,8 @@ kbd {
   border-top: 1px solid var(--sc-parch-dark);
 }
 .lp-testimonial-avatar {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: var(--sc-navy);
   color: var(--sc-gold-light);
@@ -1924,6 +1927,13 @@ kbd {
   font-family: 'Gloock', serif;
   font-size: 1.1rem;
   flex-shrink: 0;
+  overflow: hidden;
+  border: 2px solid rgba(176,154,62,0.3);
+}
+.lp-testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .lp-testimonial-name {
   font-family: 'Instrument Sans', sans-serif;
@@ -2134,4 +2144,611 @@ kbd {
   .lp-footer-links { flex-direction: column; }
   .lp-footer-brand { max-width: 100%; }
   .lp-footer-legal { flex-wrap: wrap; justify-content: center; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NEW SECTIONS — Phase 2 rebuild
+   ───────────────────────────────────────────────────────────── */
+
+/* ── ANNOUNCEMENT BAR ── */
+.lp-announcement {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--sc-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  gap: 12px;
+}
+.lp-announcement-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--sc-navy-deep);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lp-announcement-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--sc-navy-deep);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+.lp-announcement-sep {
+  opacity: 0.45;
+}
+.lp-announcement-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--sc-navy-deep);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 2px 4px;
+  opacity: 0.55;
+  transition: opacity 0.2s;
+  position: absolute;
+  right: 16px;
+}
+.lp-announcement-close:hover { opacity: 1; }
+
+/* ── TRUST STRIP ── */
+.lp-trust-strip {
+  background: var(--sc-navy-deep);
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(176,154,62,0.18);
+}
+.lp-trust-strip-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.lp-trust-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  padding: 8px 12px;
+  border-right: 1px solid rgba(176,154,62,0.15);
+}
+.lp-trust-item:last-child { border-right: none; }
+.lp-trust-item-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--sc-gold-light);
+  text-transform: uppercase;
+}
+.lp-trust-item-sub {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.45);
+  font-style: italic;
+}
+
+/* ── WHO WE SERVE ── */
+.lp-serve {
+  background: var(--sc-parchment);
+  padding: 96px 0;
+}
+.lp-serve-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+.lp-serve-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(6,21,69,0.07);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.lp-serve-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(6,21,69,0.14);
+}
+.lp-serve-card-img {
+  height: 220px;
+  overflow: hidden;
+}
+.lp-serve-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.lp-serve-card:hover .lp-serve-card-img img {
+  transform: scale(1.05);
+}
+.lp-serve-card-body {
+  padding: 28px 28px 32px;
+}
+.lp-serve-card-title {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--sc-navy);
+  margin-bottom: 10px;
+}
+.lp-serve-card-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.02rem;
+  color: var(--sc-ink-mid);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.lp-serve-card-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  padding: 0;
+  transition: color 0.2s;
+}
+.lp-serve-card-link:hover { color: var(--sc-navy); }
+
+/* ── SERVICE CARD v2 UPGRADES ── */
+.lp-service-card--v2 {
+  padding: 0;
+  overflow: hidden;
+}
+.lp-service-accent {
+  height: 3px;
+  background: linear-gradient(90deg, var(--sc-gold) 0%, var(--sc-gold-light) 100%);
+  flex-shrink: 0;
+}
+.lp-service-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 3px);
+}
+.lp-service-card--v2 .lp-service-desc {
+  flex: 1;
+}
+.lp-service-link {
+  margin-top: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+  padding: 0;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+.lp-service-link:hover { color: var(--sc-navy); }
+
+/* ── GOALL SECTION ── */
+.lp-goall {
+  background: var(--sc-navy);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.lp-goall::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(176,154,62,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.lp-goall-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+  position: relative;
+  z-index: 1;
+}
+.lp-goall-acronym {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--sc-gold-light);
+  margin-bottom: 24px;
+  opacity: 0.85;
+}
+.lp-goall-intro {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.65);
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lp-goall-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+.lp-goall-col {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(176,154,62,0.22);
+  border-radius: 4px;
+  padding: 36px 36px 40px;
+}
+.lp-goall-col-title {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--sc-gold-light);
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(176,154,62,0.2);
+}
+.lp-goall-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.lp-goall-list li {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.lp-goall-check {
+  color: var(--sc-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.lp-goall-rule {
+  height: 1px;
+  background: rgba(176,154,62,0.2);
+  margin: 60px 0;
+  position: relative;
+  z-index: 1;
+}
+.lp-goall-how {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+.lp-goall-how-card {
+  border: 1px solid rgba(176,154,62,0.18);
+  border-radius: 4px;
+  padding: 32px 28px 36px;
+  background: rgba(255,255,255,0.02);
+}
+.lp-goall-how-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--sc-gold);
+  display: block;
+  margin-bottom: 16px;
+}
+.lp-goall-how-title {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 12px;
+}
+.lp-goall-how-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+}
+.lp-goall-cta {
+  text-align: center;
+  margin-top: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── OUR STORY ── */
+.lp-story {
+  background: var(--sc-cream);
+  padding: 96px 0;
+}
+.lp-story-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: start;
+}
+.lp-story-photo {
+  position: relative;
+}
+.lp-story-photo img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+.lp-story-photo-badge {
+  position: absolute;
+  bottom: -24px;
+  right: -24px;
+  background: var(--sc-navy);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+.lp-story-photo-badge span {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--sc-gold-light);
+}
+.lp-story-content {
+  padding-top: 8px;
+}
+.lp-story-body {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: var(--sc-ink-mid);
+  margin-bottom: 20px;
+}
+.lp-story-milestones {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 36px 0 36px;
+  border-left: 2px solid rgba(176,154,62,0.3);
+  padding-left: 24px;
+}
+.lp-story-milestone {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(6,21,69,0.06);
+}
+.lp-story-milestone:last-child { border-bottom: none; }
+.lp-story-milestone-year {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.35rem;
+  color: var(--sc-navy);
+  min-width: 68px;
+  flex-shrink: 0;
+}
+.lp-story-milestone-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.02rem;
+  color: var(--sc-ink-light);
+}
+
+/* ── RESOURCES ── */
+.lp-resources {
+  background: var(--sc-parchment);
+  padding: 96px 0;
+}
+.lp-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+.lp-resource-card {
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(6,21,69,0.07);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.lp-resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(6,21,69,0.12);
+}
+.lp-resource-img {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+.lp-resource-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.lp-resource-card:hover .lp-resource-img img {
+  transform: scale(1.04);
+}
+.lp-resource-tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: var(--sc-gold);
+  color: var(--sc-navy-deep);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+.lp-resource-body {
+  padding: 24px 24px 28px;
+}
+.lp-resource-title {
+  font-family: 'Gloock', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--sc-navy);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.lp-resource-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--sc-ink-mid);
+  margin-bottom: 14px;
+}
+.lp-resource-read {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sc-gold);
+}
+
+/* ── CTA BANNER PHOTO MODIFIER ── */
+.lp-cta-banner--photo {
+  background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  padding: 100px 0;
+}
+.lp-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    rgba(6,21,69,0.92) 0%,
+    rgba(6,21,69,0.78) 50%,
+    rgba(6,21,69,0.85) 100%);
+  pointer-events: none;
+}
+.lp-cta-content--centered {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.lp-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+/* ── FOOTER ENHANCEMENTS ── */
+.lp-footer-certs {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 28px 0;
+  border-top: 1px solid rgba(176,154,62,0.12);
+  border-bottom: 1px solid rgba(176,154,62,0.12);
+  margin-top: 40px;
+}
+.lp-footer-cert {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(176,154,62,0.2);
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+.lp-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+.lp-footer-social-link {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(176,154,62,0.18);
+  color: rgba(255,255,255,0.5);
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.lp-footer-social-link:hover {
+  background: rgba(176,154,62,0.15);
+  color: var(--sc-gold-light);
+}
+.lp-footer-disclaimer {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.25);
+  font-style: italic;
+  padding: 20px 0 32px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 8px;
+}
+
+/* ── RESPONSIVE: NEW SECTIONS ── */
+@media (max-width: 768px) {
+  .lp-trust-strip-inner {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .lp-trust-item {
+    flex: 0 0 calc(50% - 0px);
+    border-right: none;
+    border-bottom: 1px solid rgba(176,154,62,0.12);
+  }
+  .lp-trust-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .lp-serve { padding: 64px 0; }
+  .lp-serve-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .lp-goall { padding: 64px 0; }
+  .lp-goall-columns { grid-template-columns: 1fr; }
+  .lp-goall-how { grid-template-columns: 1fr; gap: 16px; }
+
+  .lp-story { padding: 64px 0; }
+  .lp-story-inner { grid-template-columns: 1fr; gap: 48px; }
+  .lp-story-photo img { height: 380px; }
+  .lp-story-photo-badge { right: 0; }
+
+  .lp-resources { padding: 64px 0; }
+  .lp-resources-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  .lp-cta-banner--photo { padding: 80px 0; }
+  .lp-footer-certs, .lp-footer-social { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .lp-trust-item { flex: 0 0 100%; }
+  .lp-story-photo img { height: 280px; }
+  .lp-serve-card-img { height: 180px; }
+  .lp-cta-actions { flex-direction: column; align-items: stretch; }
+  .lp-cta-actions .lp-btn-gold,
+  .lp-cta-actions .lp-btn-outline { justify-content: center; }
+  .lp-announcement-text { font-size: 0.65rem; letter-spacing: 0.06em; }
 }
