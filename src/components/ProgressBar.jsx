@@ -1,7 +1,7 @@
 const SECTION_COLORS = {
-  A: '#6366f1', B: '#06b6d4', C: '#f43f5e',
-  D: '#f59e0b', E: '#10b981', F: '#8b5cf6',
-  G: '#34d399', R: '#94a3b8',
+  A: '#86710D', B: '#c9a227', C: '#d4b86a',
+  D: '#a8920f', E: '#10b981', F: '#3a7bd5',
+  G: '#5a9fd4', R: 'rgba(237,234,227,0.5)',
 }
 
 const SECTION_ICONS = {
@@ -10,12 +10,16 @@ const SECTION_ICONS = {
 }
 
 export default function ProgressBar({ progress, section, sectionName, current, total }) {
-  const color = SECTION_COLORS[section] || '#6366f1'
+  const color = SECTION_COLORS[section] || '#86710D'
   const icon  = SECTION_ICONS[section]  || '●'
   const pct   = Math.min(100, Math.max(0, Math.round(progress)))
 
   return (
     <div className="progress-wrap">
+      <div className="progress-brand">
+        <img src="logo.png" alt="SC Financial Life Group" className="progress-logo" />
+        <span className="progress-brand-name">SC Financial Life Group</span>
+      </div>
       <div className="progress-meta">
         <div className="progress-section" style={{ color }}>
           <span className="progress-section-dot" style={{ background: color }} />
