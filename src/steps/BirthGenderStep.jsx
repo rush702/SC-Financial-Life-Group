@@ -3,10 +3,8 @@ import SectionBadge from '../components/SectionBadge'
 
 const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
 const GENDERS = [
-  { value: 'Male',            icon: '♂️', sub: '' },
-  { value: 'Female',          icon: '♀️', sub: '' },
-  { value: 'Non-binary',      icon: '⚧️', sub: '' },
-  { value: 'Prefer not to say', icon: '🤐', sub: '' },
+  { value: 'Male', icon: '♂️', sub: '' },
+  { value: 'Female', icon: '♀️', sub: '' },
 ]
 
 function getYears() {
@@ -18,11 +16,11 @@ function getYears() {
 
 export default function BirthGenderStep({ formData, onNext, onBack }) {
   const parts = formData.dob ? formData.dob.split('-') : ['', '', '']
-  const [month,   setMonth]   = useState(parts[1] || '')
-  const [day,     setDay]     = useState(parts[2] || '')
-  const [year,    setYear]    = useState(parts[0] || '')
-  const [gender,  setGender]  = useState(formData.gender)
-  const [err,     setErr]     = useState('')
+  const [month, setMonth] = useState(parts[1] || '')
+  const [day, setDay] = useState(parts[2] || '')
+  const [year, setYear] = useState(parts[0] || '')
+  const [gender, setGender] = useState(formData.gender)
+  const [err, setErr] = useState('')
 
   const selectGender = (g) => {
     setGender(g)
@@ -78,11 +76,11 @@ export default function BirthGenderStep({ formData, onNext, onBack }) {
       </div>
 
       <h2 className="step-question" style={{ fontSize: 'clamp(1.4rem,3.5vw,2rem)', marginBottom: 8 }}>
-        How do you identify?
+        What is your biological sex?
       </h2>
       <p className="step-hint" style={{ marginBottom: 20 }}>Used for actuarial calculations. Required by insurers.</p>
 
-      <div className="cards-grid four" style={{ marginBottom: 24 }}>
+      <div className="cards-grid two" style={{ marginBottom: 24 }}>
         {GENDERS.map(g => (
           <div
             key={g.value}
