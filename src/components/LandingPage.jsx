@@ -166,7 +166,10 @@ export default function LandingPage({ onApply }) {
       )}
 
       {/* ── 2. NAV ── */}
-      <header className={`lp-nav${scrolled ? ' scrolled' : ''}`}>
+      <header
+        className={`lp-nav${scrolled ? ' scrolled' : ''}`}
+        style={{ top: announcementVisible ? '36px' : '0' }}
+      >
         <div className="lp-nav-inner">
           <button className="lp-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="SC Financial home">
             <SCSeal size={44} />
