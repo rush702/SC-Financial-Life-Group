@@ -87,7 +87,7 @@ function getActiveSteps(formData) {
 }
 
 export default function App() {
-  const [showLanding, setShowLanding] = useState(true)
+  const [showLanding, setShowLanding] = useState(typeof window !== 'undefined' && window.location.pathname !== '/apply')
   const [stepIdx, setStepIdx]         = useState(0)
   const [animKey, setAnimKey]         = useState(0)
   const [direction, setDirection]     = useState('forward')
