@@ -17,7 +17,6 @@ export default function ProgressBar({ progress, section, sectionName, current, t
   return (
     <div className="progress-wrap">
       <div className="progress-brand">
-        <img src="logo.png" alt="SC Financial Life Group" className="progress-logo" />
         <span className="progress-brand-name">SC Financial Life Group</span>
       </div>
       <div className="progress-meta">
