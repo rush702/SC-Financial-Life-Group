@@ -1450,7 +1450,7 @@ kbd {
   position: relative;
   min-height: 100vh;
   background-color: var(--sc-navy);
-  background-image: url('https://images.unsplash.com/photo-1543269664-76bc3997564a?auto=format&fit=crop&w=1920&q=80');
+  background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center 35%;
   display: flex;
