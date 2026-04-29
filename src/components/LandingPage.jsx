@@ -318,7 +318,7 @@ export default function LandingPage({ onApply }) {
           <div className="lp-serve-grid">
             {[
               {
-                img: img('1511895426328-dc8714191011', 600),
+                img: img('1609220136736-443140cffec6', 600),
                 title: 'Families & Individuals',
                 desc: 'Ensure the people you love are protected no matter what life brings. From young families building futures to individuals securing their legacy.',
                 cta: 'Family Coverage →',
@@ -330,7 +330,7 @@ export default function LandingPage({ onApply }) {
                 cta: 'Business Coverage →',
               },
               {
-                img: img('1447452001526-851a28213411', 600),
+                img: img('1559526324-4b87b5e36e44', 600),
                 title: 'Retirees & Seniors',
                 desc: 'Final expense, legacy planning, and long-term care preparation — peace of mind for every chapter of your retirement.',
                 cta: 'Senior Coverage →',
