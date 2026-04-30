@@ -457,9 +457,9 @@ export default function LandingPage({ onApply }) {
           </div>
 
           <div className="lp-goall-cta">
-            <button className="lp-btn-gold" onClick={onApply}>
+            <a className="lp-btn-gold" href="https://umustsee.net/FGL6JS" target="_blank" rel="noopener noreferrer">
               Learn How GOALL Can Work for Your Team <ArrowRight/>
-            </button>
+            </a>
           </div>
         </div>
       </section>
