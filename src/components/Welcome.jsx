@@ -1,12 +1,13 @@
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 
 const GOAL_PROGRAM_URL = 'https://umustsee.net/FGL6JS'
 
 function GoalProgramModal({ onClose }) {
-  return (
+  return createPortal(
     <div
       style={{
-        position: 'fixed', inset: 0, zIndex: 1000,
+        position: 'fixed', inset: 0, zIndex: 9999,
         display: 'flex', flexDirection: 'column',
         background: '#07071a',
         animation: 'slideInUp 0.35s cubic-bezier(0.16,1,0.3,1) both',
@@ -45,7 +46,8 @@ function GoalProgramModal({ onClose }) {
         style={{ flex: 1, border: 'none', width: '100%' }}
         allowFullScreen
       />
-    </div>
+    </div>,
+    document.body
   )
 }
 
