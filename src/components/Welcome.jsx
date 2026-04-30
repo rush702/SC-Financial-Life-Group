@@ -43,6 +43,25 @@ export default function Welcome({ onNext }) {
       <p className="welcome-trust">
         🔒 Your information is protected by bank-level encryption and never sold.
       </p>
+
+      <a
+        href="https://umustsee.net/FGL6JS"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: 'inline-block',
+          marginTop: 24,
+          fontSize: '0.85rem',
+          color: 'var(--text-muted)',
+          textDecoration: 'underline',
+          textUnderlineOffset: 3,
+          transition: 'color 0.2s',
+        }}
+        onMouseEnter={e => e.target.style.color = 'var(--text)'}
+        onMouseLeave={e => e.target.style.color = 'var(--text-muted)'}
+      >
+        Learn about our Goal Program →
+      </a>
     </div>
   )
 }
