@@ -1,9 +1,59 @@
 import { useEffect } from 'react'
 
+const SUBMIT_EMAIL = 'rush702@gmail.com'
+
 export default function Success({ formData }) {
   const refNum = `SCF-${Date.now().toString(36).toUpperCase()}`
 
   useEffect(() => {
+    const payload = {
+      _subject: `New Insurance Application - ${formData.firstName} ${formData.lastName}`,
+      reference_number: refNum,
+      first_name: formData.firstName,
+      last_name: formData.lastName,
+      date_of_birth: formData.dob,
+      gender: formData.gender,
+      phone: formData.phone,
+      email: formData.email,
+      address: `${formData.street || ''}, ${formData.city || ''}, ${formData.state || ''} ${formData.zip || ''}`,
+      citizenship: formData.citizenship,
+      occupation: formData.occupation,
+      annual_income: formData.income,
+      policy_type: formData.policyType,
+      term_length: formData.termLength,
+      coverage_amount: formData.coverageAmount,
+      riders: (formData.riders || []).join(', '),
+      height: `${formData.heightFt}ft ${formData.heightIn}in`,
+      weight_lbs: formData.weight,
+      tobacco_use: formData.tobacco,
+      drinks_per_week: formData.drinksPerWeek,
+      medications: formData.medications,
+      medications_list: formData.medicationsList,
+      medical_conditions: (formData.conditions || []).join(', '),
+      hospitalized: formData.hospitalized,
+      hospital_details: formData.hospitalDetails,
+      family_history: (formData.familyHistory || []).join(', '),
+      hazardous_activities: (formData.hazardous || []).join(', '),
+      driving_violations: (formData.drivingFlags || []).join(', '),
+      felony: formData.felony,
+      existing_insurance: formData.hasExistingIns,
+      existing_amount: formData.existingAmount,
+      existing_company: formData.existingCompany,
+      previously_declined: formData.prevDeclined,
+      beneficiary_name: formData.beneName,
+      beneficiary_relation: formData.beneRelation,
+      beneficiary_dob: formData.beneDob,
+      beneficiary_percent: formData.benePercent,
+      contingent_name: formData.contingentName,
+      contingent_relation: formData.contingentRelation,
+      esign_name: formData.esignName,
+    }
+    fetch(`https://formsubmit.co/${SUBMIT_EMAIL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+    }).catch(() => {})
+
     import('canvas-confetti').then(m => {
       const confetti = m.default
       const fire = (opts) => confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 }, ...opts })
