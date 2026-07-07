@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 
-const FORMSPREE_ID = 'xgorpldw'
+const SUBMIT_EMAIL = 'rush702@gmail.com'
 
 export default function Success({ formData }) {
   const refNum = `SCF-${Date.now().toString(36).toUpperCase()}`
 
   useEffect(() => {
-    if (FORMSPREE_ID !== 'YOUR_FORM_ID') {
+    {
       const payload = {
         _subject: `New Insurance Application - ${formData.firstName} ${formData.lastName}`,
         reference_number: refNum,
@@ -49,7 +49,7 @@ export default function Success({ formData }) {
         contingent_relation: formData.contingentRelation,
         esign_name: formData.esignName,
       }
-      fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      fetch(`https://formsubmit.co/${SUBMIT_EMAIL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(payload),

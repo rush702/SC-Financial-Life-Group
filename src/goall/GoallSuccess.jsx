@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const FORMSPREE_ID = 'xgorpldw'
+const SUBMIT_EMAIL = 'rush702@gmail.com'
 
 export default function GoallSuccess({ formData }) {
   const refNum = `GOALL-${Date.now().toString(36).toUpperCase()}`
@@ -89,7 +89,7 @@ export default function GoallSuccess({ formData }) {
       presenter_date: formData.presenterDate,
     }
 
-    fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+    fetch(`https://formsubmit.co/${SUBMIT_EMAIL}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload),
